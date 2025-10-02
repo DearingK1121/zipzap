@@ -1,64 +1,86 @@
-# zipzap
+# ZipZap
 
-⚡ A lightweight Python utility to quickly zip folders into `.zip` archives.  
+ZipZap is a simple Python tool that lets you quickly compress entire folders into `.zip` archives.  
+You can use it either from the **command line** or with a **file explorer dialog**.
 
-## Features
-- Zip entire folders (including subdirectories and files).  
-- Preserves folder structure inside the archive.  
-- Simple, minimal, and dependency-free (uses Python’s built-in `zipfile` + `tkinter`).  
-- Supports **interactive mode** with a file explorer dialog (no need to type paths).  
+---
 
-## Installation
-Clone the repository:
-```bash
-git clone https://github.com/DearingK1121/zipzap
-cd zipzap
-```
+## ✨ Features
+- Select a **folder** (not files) and compress it into a `.zip`.
+- Automatically names the zip file after your folder (you can change it).
+- Works with **nested subfolders** and files.
+- Cross-platform (Windows, macOS, Linux).
 
-No external dependencies needed—works with any standard Python 3 installation.
+---
 
-## Usage
+## 🚀 Installation
+1. Make sure you have **Python 3.7+** installed:
+   ```bash
+   python --version
+   ```
+2. Clone this repository:
+   ```bash
+   git clone https://github.com/Dearingk1121/zipzap.git
+   cd zipzap
+   ```
+3. (Optional) Make it executable on Linux/macOS:
+   ```bash
+   chmod +x zipzap.py
+   ```
 
-### 1. Command-line mode
-Run directly from the terminal:
-```bash
-python zipzap.py my_folder output.zip
-```
-- `my_folder` → the folder you want to compress.  
-- `output.zip` → the resulting archive file name.  
+---
 
-### 2. Interactive mode
-If you run without arguments:
+## 🖥️ Usage
+
+### Method 1: File Explorer (no arguments)
+Just run:
 ```bash
 python zipzap.py
 ```
-- A **file explorer window** will open where you can choose the folder to zip.  
-- Then another dialog will let you pick where to save the `.zip` file.  
 
-### 3. As a module
-You can also import `zipzap` in your own Python projects:
-```python
-from zipzap import zip_folder
+- You’ll be prompted to **choose a folder**.  
+- Then choose where to save the resulting `.zip` file.  
+- The zip file will contain the folder and all its subfolders/files.
 
-zip_folder("my_folder", "my_folder.zip")
-```
+---
 
-## Example
+### Method 2: Command Line (with arguments)
 ```bash
-python zipzap.py test_folder test_folder.zip
-```
-Output:
-```
-Zipped test_folder -> test_folder.zip
+python zipzap.py <folder_path> <output_zip>
 ```
 
-Or, run without arguments and select the folder + save location via dialog.
+Example:
+```bash
+python zipzap.py ./MyProject ./MyProject.zip
+```
 
-## Roadmap
-- [ ] Add unzip support  
-- [ ] Add support for selecting multiple folders in interactive mode  
-- [ ] Add progress bar for large folders  
-- [ ] Add support for excluding files by pattern  
+This will create `MyProject.zip` containing everything inside the `MyProject` folder.
 
-## License
-MIT License © 2025 Your Name
+---
+
+## 📂 Example
+If you choose a folder called `MathToolbox/` with this structure:
+```
+MathToolbox/
+ ├── MathToolbox.java
+ └── README.md
+```
+
+ZipZap will create:
+```
+MathToolbox.zip
+   ├── MathToolbox.java
+   └── README.md
+```
+
+---
+
+## 📝 Notes
+- Always select a **folder** in the first dialog (not individual files).
+- Works great for quickly packaging projects or assignments.
+- The zipped folder keeps its structure when extracted.
+
+---
+
+## 📜 License
+MIT License — feel free to use, modify, and share.

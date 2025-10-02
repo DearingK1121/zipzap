@@ -22,17 +22,26 @@ def main():
         folder_path = sys.argv[1]
         output_path = sys.argv[2]
     else:
-        # Use Tkinter file dialog to select folder
+        # Set up hidden Tkinter root
         root = tk.Tk()
-        root.withdraw()  # hide the root window
-        folder_path = filedialog.askdirectory(title="Select a folder to zip")
+        root.withdraw()
+        root.wm_attributes('-topmost', 1)  # make sure dialogs appear on top
+
+        # Ask for a folder, not a file
+        folder_path = filedialog.askdirectory(
+            title="Select a folder to zip",
+            mustexist=True
+        )
         if not folder_path:
             print("No folder selected. Exiting.")
             sys.exit(1)
 
-        # Ask where to save the zip
+        # Default zip filename = folder name
+        default_name = os.path.basename(folder_path.rstrip(os.sep)) + ".zip"
+
         output_path = filedialog.asksaveasfilename(
             title="Save zip file as...",
+            initialfile=default_name,
             defaultextension=".zip",
             filetypes=[("Zip files", "*.zip")]
         )
@@ -48,3 +57,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+# zipzap.py - A simple script to zip a folder into a .zip file
