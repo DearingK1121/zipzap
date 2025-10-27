@@ -54,6 +54,7 @@ def main():
         sys.exit(1)
 
     zip_folder(folder_path, output_path)
+    print("You have finised. Goodbye!")
 
 if __name__ == "__main__":
     main()
